@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import './App.css';
+import Board from './components/Board';
+import GameInfo from './components/GameInfo';
 
 function calculateWinner(squares) {
   const lines = [
@@ -42,9 +45,9 @@ function App() {
 
   let status;
   if (winner) {
-    status = 'Winner is ' + winner;
+    status = 'Winner is: ' + winner;
   } else {
-    status = 'Next player is ' + (xIsNext ? 'X' : 'O');
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
 
   const resetGame = () => {
@@ -53,8 +56,10 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Hallo tic-tac-toe</h1>
+    <div className="app">
+      <h1>Tic-Tac-Toe</h1>
+      <Board squares={squares} onClick={handleClick} />
+      <GameInfo status={status} onReset={resetGame} />
     </div>
   );
 }
