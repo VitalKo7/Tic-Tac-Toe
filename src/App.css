@@ -24,6 +24,7 @@ h1 {
 .square {
   width: 100px;
   height: 100px;
+  color: #213547;
   background-color: #fff;
   border: 1px solid #999;
   font-size: 2rem;
