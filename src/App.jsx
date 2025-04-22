@@ -55,7 +55,12 @@ function App() {
 
   let status;
   if (winner === 'draw') {
-    status = 'Draw!';
+    // status = 'Draw!';
+    status = (
+      <>
+        <span className="next-player">Draw! :)</span>
+      </>
+    );
   } else if (winner) {
     // status = 'Winner is: ' + winner;
     status = (
