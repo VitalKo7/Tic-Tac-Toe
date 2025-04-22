@@ -15,12 +15,22 @@ function calculateWinner(squares) {
     [2, 4, 6],
   ];
 
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+  // for (let i = 0; i < lines.length; i++) {
+  //   const [a, b, c] = lines[i];
+  //   if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+  //     return squares[a];
+  //   }
+  // }
+  for (let [a, b, c] of lines) {
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return squares[a]; // 'X' или 'O'
     }
   }
+
+  if (squares.every(Boolean)) {
+    return 'draw';
+  }
+
   return null;
 }
 
@@ -44,10 +54,22 @@ function App() {
   const winner = calculateWinner(squares);
 
   let status;
-  if (winner) {
-    status = 'Winner is: ' + winner;
+  if (winner === 'draw') {
+    status = 'Draw!';
+  } else if (winner) {
+    // status = 'Winner is: ' + winner;
+    status = (
+      <>
+        <span className="next-player">Winner is: {winner}</span>
+      </>
+    );
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    // status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = (
+      <>
+        Next turn: <span className="next-player">{xIsNext ? 'X' : 'O'}</span>
+      </>
+    );
   }
 
   const resetGame = () => {
